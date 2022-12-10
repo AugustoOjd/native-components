@@ -1,59 +1,75 @@
 import { View, Text, StyleSheet, FlatList } from 'react-native'
 import React from 'react'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { styles } from '../theme/appTheme';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import FlatListMenuItem from '../components/FlatListMenuItem';
 
-
-interface MenuItems {
-  name:       string,
-  icon:       string,
-  components?: string
-}
 
 const menuItems = [
   {
-    name:       'Animation 01',
-    icon:       'happy-outline',
-    components:  'Animation01Screen'
+    name:         'Animation 01',
+    icon:         'happy-outline',
+    components:   'Animation01Screen'
+  },
+  {
+    name:         'Animation 02',
+    icon:         'albums-outline',
+    components:   'Animation02Screen'
   }
 ]
 
 
 const HomeScreen = () => {
 
+  const { top } = useSafeAreaInsets()
 
-  const renderMenuItem = ( menuItem: MenuItems) =>{
+  const renderListHeader = () =>{
     return(
-      <View>
-        <Text>
-          { menuItem.name } - { menuItem.icon }
+      <View
+        style={{
+          marginTop: top + 20,
+          marginBottom: 20
+        }}
+      >
+        <Text
+          style={styles.title}
+        >
+          Lista de opciones
         </Text>
+      </View>
+    )
+  }
+
+  const itemSeparator = () =>{
+    return(
+      <View
+        style={{
+          borderBottomWidth: 1,
+          opacity: 0.5
+        }}
+      >
+
       </View>
     )
   }
 
   return (
     <View
-      style={ styles.base }
+      style={{
+        flex: 1,
+        ...styles.globalMargin
+      }}
     >
-
       <FlatList
         data={menuItems}
-        renderItem={ ({ item }) => renderMenuItem( item )}
+        renderItem={ ({ item }) => <FlatListMenuItem menuItem={item}/>}
         keyExtractor={ (item)=> item.name }
+        ListHeaderComponent={ renderListHeader }
+        ItemSeparatorComponent={ itemSeparator }
       />
-      {/* <Icon 
-        name='arrow-forward-circle-outline'
-        size={30}
-      /> */}
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  base: {
-    flex: 1,
-    // backgroundColor: 'blue'
-  }
-})
 
 export default HomeScreen
