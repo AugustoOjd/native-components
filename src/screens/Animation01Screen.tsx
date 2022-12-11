@@ -1,53 +1,10 @@
-import { Animated, Button, Easing, StyleSheet, Text, View } from 'react-native'
-import React, { useRef } from 'react'
+import { Animated, Button, StyleSheet, View } from 'react-native'
+import React from 'react'
+import { useAnimation } from '../hooks/useAnimation';
 
 const Animation01Screen = () => {
 
-    const opacity = useRef( new Animated.Value(0.1)).current
-    const top = useRef( new Animated.Value(-160)).current
-
-    
-    const fadeIn = () =>{
-
-        Animated.timing(
-            opacity, 
-            {
-                toValue: 1,
-                duration: 800,
-                useNativeDriver: true
-            }
-        ).start()
-
-        Animated.timing(
-            top,
-            {
-                toValue: 0,
-                duration: 800,
-                useNativeDriver: true,
-                easing: Easing.bounce
-            }
-        ).start()
-    }
-
-    const fadeOut = () => {
-        Animated.timing(
-            opacity, 
-            {
-                toValue: 0.1,
-                duration: 800,
-                useNativeDriver: true,
-            }
-        ).start( ()=> console.log('Esto recibe un callback cuando termina'))
-
-        Animated.timing(
-            top,
-            {
-                toValue: -160,
-                duration: 800,
-                useNativeDriver: true
-            }
-        ).start()
-    }
+    const {opacity, position, startMoving, fadeIn, fadeOut} = useAnimation()
 
   return (
     <View
@@ -59,7 +16,7 @@ const Animation01Screen = () => {
                 opacity:    opacity,
                 transform: [
                     {
-                        translateY: top
+                        translateY: position
                     }
                 ]
             }}
@@ -70,7 +27,11 @@ const Animation01Screen = () => {
       >
         <Button
           title='Fadein'
-          onPress={ ()=> fadeIn() }
+          onPress={ ()=> {
+            fadeIn(),
+            startMoving( -160, 800 )
+            }
+        }
         />
 
         <Button

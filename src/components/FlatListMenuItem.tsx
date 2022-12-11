@@ -26,7 +26,7 @@ const FlatListMenuItem = ({menuItem}: Props) => {
         >
             <Icon
                 name={ menuItem.icon}
-                color={ 'gray' }
+                color={ '#81b0ff' }
                 size={ 20 }
             />
             <Text
