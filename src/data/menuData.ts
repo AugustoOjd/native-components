@@ -20,5 +20,10 @@ export const menuItems = [
         name:         'Alerts',
         icon:         'alert-outline',
         components:   'AlertScreen'
-    }
+    },
+    {
+      name:         'Text inputs',
+      icon:         'text-outline',
+      components:   'TextInputScreen'
+  }
   ]
