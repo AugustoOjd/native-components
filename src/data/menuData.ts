@@ -25,5 +25,16 @@ export const menuItems = [
       name:         'Text inputs',
       icon:         'text-outline',
       components:   'TextInputScreen'
-  }
+    },
+    {
+      name:         'Pull to refresh',
+      icon:         'refresh-outline',
+      components:   'PullToRefreshScreen'
+    },
+    {
+      name:         'Section List',
+      icon:         'list-outline',
+      components:   'SectionListScreen'
+    }
+
   ]
