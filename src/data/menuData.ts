@@ -35,6 +35,21 @@ export const menuItems = [
       name:         'Section List',
       icon:         'list-outline',
       components:   'SectionListScreen'
+    },
+    {
+      name:         'Modals',
+      icon:         'copy-outline',
+      components:   'ModalScreen'
+    },
+    {
+      name:         'Infinity Scroll',
+      icon:         'download-outline',
+      components:   'InfinityScrollScreen'
+    },
+    {
+      name:         'Infinity Img',
+      icon:         'images-outline',
+      components:   'InfinityImgScrollScreen'
     }
 
   ]
