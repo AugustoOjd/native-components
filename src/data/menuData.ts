@@ -8,7 +8,7 @@ export const menuItems = [
     },
     {
       name:         'Animation 02',
-      icon:         'albums-outline',
+      icon:         'flower-outline',
       components:   'Animation02Screen'
     },
     {
@@ -50,6 +50,15 @@ export const menuItems = [
       name:         'Infinity Img',
       icon:         'images-outline',
       components:   'InfinityImgScrollScreen'
+    },
+    {
+      name:         'Slides',
+      icon:         'albums-outline',
+      components:   'SlidesScreen'
+    },
+    {
+      name:         'Theme app',
+      icon:         'color-palette-outline',
+      components:   'ChangeThemeScreen'
     }
-
   ]
