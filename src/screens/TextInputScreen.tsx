@@ -94,6 +94,7 @@ export default TextInputScreen
 
 const styless = StyleSheet.create({
     input: {
+      backgroundColor: 'white',
       height: 40,
       borderWidth: 1,
       borderRadius: 10,

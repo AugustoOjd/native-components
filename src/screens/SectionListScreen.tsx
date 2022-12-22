@@ -1,8 +1,9 @@
 import { SectionList, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import { styles } from '../theme/appTheme'
 import HeaderTitle from '../components/HeaderTitle'
 import ItemSeparator from '../components/ItemSeparator';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 interface Casas {
     casa: string;
@@ -26,6 +27,8 @@ const casas: Casas[] = [
 
 const SectionListScreen = () => {
 
+  const {theme: {colors}} = useContext(ThemeContext)
+
   return (
     <View
         style={ {
@@ -34,15 +37,6 @@ const SectionListScreen = () => {
         }}
     >
 
-      {/*<SectionList
-      sections={DATA}
-      keyExtractor={(item, index) => item + index}
-      renderItem={({ item }) => <Item title={item} />}
-      renderSectionHeader={({ section: { title } }) => (
-        <Text style={styles.header}>{title}</Text>
-      )}
-    /> */}
-
         <SectionList
             sections={casas}
             keyExtractor={( item, index) => item + index}
@@ -50,12 +44,12 @@ const SectionListScreen = () => {
             ListHeaderComponent={() => <HeaderTitle title='Section List'/>}
             ListFooterComponent={() => <HeaderTitle title={`Total de casas: ${casas.length}`}/>}
 
-            renderItem={ ({item}) => <Text>{item}</Text>}
+            renderItem={ ({item}) => <Text style={{ color: colors.text }}>{item}</Text>}
             stickySectionHeadersEnabled={true}
             renderSectionHeader={ ({ section }) =>  (
                 <View
                     style={{
-                        backgroundColor: 'white'
+                        backgroundColor: colors.background
                     }}
                 >
                     <HeaderTitle title={section.casa} />

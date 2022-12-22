@@ -1,7 +1,8 @@
 import { StyleSheet, Switch, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import HeaderTitle from '../components/HeaderTitle';
 import CustomSwitch from '../components/CustomSwitch';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 const SwitchScreen = () => {
 
@@ -10,6 +11,7 @@ const SwitchScreen = () => {
         isHungry:   false,
         isHappy:    true
     })
+    const { theme: {colors}} = useContext(ThemeContext)
 
     const { isActive, isHungry, isHappy} = state
 
@@ -28,21 +30,30 @@ const SwitchScreen = () => {
     <HeaderTitle title='Switches'/>
     
     <View style={ styles.switchRow }>
-        <Text style={styles.jsonText}>
+        <Text style={
+            {
+                ...styles.jsonText,
+                color: colors.text}}>
             isActive
         </Text>
         <CustomSwitch isOn={isActive} onChange={(value)=> onChange(value, 'isActive')}/>
     </View>
 
     <View style={ styles.switchRow }>
-        <Text style={styles.jsonText}>
+        <Text style={
+            {
+                ...styles.jsonText,
+                color: colors.text}}>
             isHungry
         </Text>
         <CustomSwitch isOn={isHungry} onChange={(value)=> onChange(value, 'isHungry')}/>
     </View>
 
     <View style={ styles.switchRow }>
-        <Text style={styles.jsonText}>
+        <Text style={
+            {
+                ...styles.jsonText,
+                color: colors.text}}>
             isHappy
         </Text>
         <CustomSwitch isOn={isHappy} onChange={(value)=> onChange(value, 'isHappy')}/>
@@ -50,7 +61,10 @@ const SwitchScreen = () => {
     
 
     <Text
-        style={ styles.jsonText}
+        style={ 
+            {
+                ...styles.jsonText,
+            color: colors.text}}
     >
         { JSON.stringify( state, null, 2)}
     </Text>
@@ -66,7 +80,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 30
     },
     jsonText: {
-        fontSize: 25
+        fontSize: 25,
     },
     switchRow: {
         flexDirection: 'row',

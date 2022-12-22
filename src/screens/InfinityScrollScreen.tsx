@@ -1,11 +1,13 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import HeaderTitle from '../components/HeaderTitle'
 import { styles } from '../theme/appTheme'
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 const InfinityScrollScreen = () => {
 
     const [numbers, setNumbers] = useState([0,1,2,3,4,5])
+    const { theme: {colors} } = useContext(ThemeContext)
 
     const loadMore = () =>{
 
@@ -37,7 +39,7 @@ const InfinityScrollScreen = () => {
             )}
             data={numbers}
             keyExtractor={ (item) => item.toString()}
-            renderItem={({ item}) => <Text style={{ height: 150}}> {item} </Text> }
+            renderItem={({ item}) => <Text style={{ height: 150, color: colors.text}}> {item} </Text> }
 
             onEndReached={ () => loadMore()}
             onEndReachedThreshold={ 0.5 }
